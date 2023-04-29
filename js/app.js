@@ -1,9 +1,10 @@
 const zBox = document.querySelector('.lists')
-{/* <a href="#" class="btn btn-primary">Go somewhere</a> */}
-// zSelect = document.querySelector('#select');
+      zSelect = document.querySelector('#select');
+      zInput = document.querySelector('.input');
 
 
  function renderProductsData (data) {
+   zBox.innerHTML = null
   data.forEach((element, index, array) => {
         let newCard = `
       <div class="card" style="width: 18rem;">
@@ -20,3 +21,33 @@ const zBox = document.querySelector('.lists')
  }
 
  renderProductsData(products)
+
+ 
+ //*******************FILTER PRODUCTS*****************/
+ let filterCategory = [] 
+    
+  products.forEach((element, index, array) => {
+    if(!filterCategory.includes(element.category.name)){
+      filterCategory.push(element.category.name)
+    }
+ })
+
+ filterCategory.forEach((value) => {
+   let newOption =`
+    <option value=${value}>${value}</option>
+   `
+
+   zSelect.insertAdjacentHTML('beforeend', newOption)
+  })
+
+
+
+ zSelect.addEventListener('change', (e) => {
+  let newProductArr = products.filter(item => item.category.name == e.target.value) 
+      renderProductsData(newProductArr)
+})
+
+//**************************SEARCH**************************/
+zInput.addEventListener('keyup', () => {
+  e.target.value
+})
