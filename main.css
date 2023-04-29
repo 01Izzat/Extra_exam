@@ -9,19 +9,22 @@ img{
   height: 200px;
  
 }
-ul{
-  /* width: 200px;
-  height: 200px; */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-.list {
- 
+
+.lists {
+  padding: .2rem;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   list-style-type: none;
   gap: 1rem;
+}
+.nav{
+  display: flex;
+  justify-content: center;
+  gap: 7rem;
+  margin: 1rem 0;
+}
+
+.card {
+  
 }

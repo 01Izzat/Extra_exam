@@ -7,12 +7,12 @@ const zBox = document.querySelector('.lists')
    zBox.innerHTML = null
   data.forEach((element, index, array) => {
         let newCard = `
-      <div class="card" style="width: 18rem;">
+      <div class="card" style="width: 18rem; ">
         <img src=${element.images[0]} class="card-img-top" alt="...">
-          <div class="card-body">
+          <div class="card-body" >
             <h5 class="card-title">${element.title}</h5>
             <p class="card-text">${element.description}</p>
-            <strong>$${element.price}</strong>
+            <strong style="display: block; margin-bottom:0;">$${element.price}</strong>
           </div>
       </div>
         `
@@ -48,6 +48,12 @@ const zBox = document.querySelector('.lists')
 })
 
 //**************************SEARCH**************************/
-zInput.addEventListener('keyup', () => {
-  e.target.value
+zInput.addEventListener('keyup', (e) => {
+    let newSearchProducts = products.map((value) => {
+       if(value.title.toLowerCase().includes(e.target.value.toLowerCase())) {
+         return value
+       }
+    })
+      
+    renderProductsData(newSearchProducts.filter(item => item))
 })
